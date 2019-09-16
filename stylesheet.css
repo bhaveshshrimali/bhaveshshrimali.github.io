@@ -80,8 +80,6 @@ th,
 tr,
 p,
 a {
-  -webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 14px;
 }
