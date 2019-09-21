@@ -91,7 +91,7 @@ strong {
 }
 strongred {
   font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-  color: 'red' ;
+  color: "Red" ;
   font-size: 14px;
   font-weight: 800
 }
