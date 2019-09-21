@@ -89,9 +89,12 @@ strong {
   font-size: 14px;
   font-weight: 800
 }
+b {
+  color: red;
+}
 strongred {
   font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-  color: "Red" ;
+  color: red;
   font-size: 14px;
   font-weight: 800
 }
