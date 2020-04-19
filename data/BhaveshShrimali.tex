@@ -5,7 +5,7 @@
 \usepackage{lmodern}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{float,subcaption,enumitem}
-\usepackage{graphicx}
+\usepackage{graphicx, color}
 \usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage[dvipsnames]{xcolor}
@@ -15,9 +15,18 @@
 \usepackage{bibentry}
 \hypersetup{
 	colorlinks,
-	linkcolor={blue!50!black},
 	citecolor={blue!50!black},
 	urlcolor={blue!80!black}
+}
+
+\newenvironment{benumerate}[1]{
+	\let\oldItem\item
+	\def\item{\addtocounter{enumi}{-2}\oldItem}
+	\begin{enumerate}[label={[J\arabic*]},leftmargin=-3em]
+		\setcounter{enumi}{#1}
+		\addtocounter{enumi}{1}
+	}{
+	\end{enumerate}
 }
 \newcommand{\myname}[1]{{\color{blue}\bf{#1}}}
 \pagenumbering{gobble}
@@ -77,9 +86,9 @@ homogenization; applied math; numerical analysis; high performance computing;\\ 
 \end{minipage}\hfill
 \begin{minipage}[t]{0.75\linewidth}
 	\vspace{-1em}
-	\begin{enumerate}[label={[J\arabic*]},leftmargin=-3em]
+	\begin{benumerate}{1}
 		\item \bibentry{BhaveshJMPSPorous}\hfill[\href{http://pamies.cee.illinois.edu/Publications_files/JMPS2019.pdf}{\bf\textsf{pdf}}]
-	\end{enumerate}
+	\end{benumerate}
 \end{minipage}\\[3mm]
 \begin{minipage}[t]{0.15\linewidth}
 	\textsc{Awards}\\ \& \\ \textsc{Achievements}
