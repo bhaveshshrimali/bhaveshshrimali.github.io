@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.21)  15 APR 2020 20:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.21)  26 APR 2020 00:19
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -989,6 +989,23 @@ Underfull \hbox (badness 10000) detected at line 3
 [][]
  []
 
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 \bibitem{BhaveshIJNLMSyntactic}
+                                    
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 10
+[][]
+ []
+
 )
 LaTeX Font Info:    Trying to load font information for U+fontawesometwo on inp
 ut line 53.
@@ -1037,19 +1054,19 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 59.
 (c:/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 9
-9.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
+00.
 
 (c:/texlive/2019/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 []\OT1/lmr/m/sc/10 Technical
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 158.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 159.
 
-Overfull \hbox (11.13197pt too wide) in paragraph at lines 42--158
+Overfull \hbox (11.13197pt too wide) in paragraph at lines 42--159
 []
  []
 
@@ -1061,21 +1078,32 @@ een already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.158 \end{document}
-                    ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 158.
+l.159 \end{document}
+                    pdfTeX warning (ext4): destination with the same identifier
+ (name{cite.BhaveshIJNLMSyntactic}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.159 \end{document}
+                    ]pdfTeX warning (ext4): destination with the same identifie
+r (name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.159 \end{document}
+                     [2]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 159.
  (./BhaveshShrimali.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 158.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 158.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 159.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 159.
 Package rerunfilecheck Info: File `BhaveshShrimali.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 158.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 159.
  ) 
 Here is how much of TeX's memory you used:
- 12614 strings out of 480994
- 202456 string characters out of 5916047
- 467725 words of memory out of 5000000
- 27894 multiletter control sequences out of 15000+600000
+ 12618 strings out of 480994
+ 202537 string characters out of 5916047
+ 468768 words of memory out of 5000000
+ 27896 multiletter control sequences out of 15000+600000
  569495 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,5n,46p,320b,357s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1091,10 +1119,10 @@ lic/lm/lmr10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:
 f-dist/fonts/type1/public/lm/lmro10.pfb><c:/texlive/2019/texmf-dist/fonts/type1
 /public/lm/lmss10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmssbx1
 0.pfb>
-Output written on BhaveshShrimali.pdf (1 page, 230401 bytes).
+Output written on BhaveshShrimali.pdf (2 pages, 231829 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
- 4 named destinations out of 1000 (max. 500000)
+ 74 PDF objects out of 1000 (max. 8388607)
+ 59 compressed objects within 1 object stream
+ 6 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
