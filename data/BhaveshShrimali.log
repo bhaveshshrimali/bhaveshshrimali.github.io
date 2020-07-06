@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.21)  26 APR 2020 00:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.21)  6 JUL 2020 13:40
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
 **BhaveshShrimali.tex
 (./BhaveshShrimali.tex
@@ -1100,10 +1100,10 @@ Package rerunfilecheck Info: File `BhaveshShrimali.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 159.
  ) 
 Here is how much of TeX's memory you used:
- 12618 strings out of 480994
- 202537 string characters out of 5916047
- 468768 words of memory out of 5000000
- 27896 multiletter control sequences out of 15000+600000
+ 12619 strings out of 480994
+ 202547 string characters out of 5916047
+ 468769 words of memory out of 5000000
+ 27897 multiletter control sequences out of 15000+600000
  569495 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,5n,46p,320b,357s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1119,7 +1119,7 @@ lic/lm/lmr10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:
 f-dist/fonts/type1/public/lm/lmro10.pfb><c:/texlive/2019/texmf-dist/fonts/type1
 /public/lm/lmss10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmssbx1
 0.pfb>
-Output written on BhaveshShrimali.pdf (2 pages, 231829 bytes).
+Output written on BhaveshShrimali.pdf (2 pages, 231733 bytes).
 PDF statistics:
  74 PDF objects out of 1000 (max. 8388607)
  59 compressed objects within 1 object stream
