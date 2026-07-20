@@ -1,0 +1,128 @@
+% Build-time source for the first-party equation images used by site.js.
+% The production website does not load TeX, MathJax, KaTeX, or web fonts.
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{xcolor}
+\usepackage[active,tightpage]{preview}
+\setlength\PreviewBorder{2pt}
+\pagestyle{empty}
+
+\definecolor{chalk}{RGB}{237,241,230}
+\definecolor{chalkblue}{RGB}{157,203,209}
+\definecolor{chalkgold}{RGB}{226,197,139}
+\definecolor{dashboardink}{RGB}{19,38,61}
+
+\begin{document}
+
+\begin{preview}
+  \color{chalk}$\displaystyle
+  \operatorname{Div}\bm{P}+\bm{B}=\rho_0\ddot{\bm{u}}
+  \quad\text{in }\Omega_0$
+\end{preview}
+
+\begin{preview}
+  \color{chalk}$\displaystyle
+  \bm{P}=\frac{\partial\psi}{\partial\bm{F}},
+  \qquad J=\det\bm{F}>0$
+\end{preview}
+
+\begin{preview}
+  \color{chalk}$\displaystyle
+  \delta\Pi(\bm{u};\delta\bm{u})=0
+  \qquad\forall\,\delta\bm{u}\in\mathcal{V}_0$
+\end{preview}
+
+\begin{preview}
+  \color{chalk}$\displaystyle
+  \mathbb{C}^{\mathrm{ep}}
+  =\mathbb{C}
+  -\sum_{\alpha=1}^{n_{\mathrm{slip}}}
+   \sum_{\beta=1}^{n_{\mathrm{slip}}}
+  \left[\frac{\partial\bm{R}}{\partial\bm{P}}\right]^{-1}_{\!\alpha\beta}
+  (\mathbb{C}:\bm{S}^{\alpha})\otimes(\bm{S}^{\beta}:\mathbb{C})$
+\end{preview}
+
+\begin{preview}
+  \color{chalkgold}$\displaystyle
+  \bm{\theta}_{k+1}=\bm{\theta}_k
+  -\eta\,\nabla_{\!\bm{\theta}}\mathcal{L}(\bm{\theta}_k)$
+\end{preview}
+
+\begin{preview}
+  \color{chalkblue}$\displaystyle
+  p(\bm{\theta}\mid\mathcal{D})
+  \propto p(\mathcal{D}\mid\bm{\theta})\,p(\bm{\theta})$
+\end{preview}
+
+\begin{preview}
+  \color{chalkblue}$\displaystyle
+  f(\bm{x})\sim\mathcal{GP}\!\left(m(\bm{x}),k(\bm{x},\bm{x}')\right)$
+\end{preview}
+
+\begin{preview}
+  \color{chalk}$\displaystyle
+  \operatorname{Attention}(Q,K,V)
+  =\operatorname{softmax}\!\left(\frac{QK^{\mathsf T}}{\sqrt{d_k}}\right)V$
+\end{preview}
+
+\begin{preview}
+  \color{chalk}$\displaystyle
+  W'=W+BA,
+  \qquad\operatorname{rank}(BA)\ll\dim(W)$
+\end{preview}
+
+\begin{preview}
+  \color{chalk}$\displaystyle
+  \mathcal{G}_{\bm{\theta}}:a\mapsto u,
+  \qquad\min_{\bm{\theta}}\,\mathbb{E}_{a}
+  \left\lVert\mathcal{G}_{\bm{\theta}}(a)-u\right\rVert_2^2$
+\end{preview}
+
+\begin{preview}
+  \color{chalkblue}$\displaystyle
+  \mu_{*}(\bm{x})
+  =\bm{k}_{*}^{\mathsf T}(K+\sigma_n^2I)^{-1}\bm{y}$
+\end{preview}
+
+\begin{preview}
+  \color{chalkgold}$\displaystyle
+  \mathrm{Observe}\longrightarrow\mathrm{Plan}
+  \longrightarrow\mathrm{Act}\longrightarrow\mathrm{Reflect}$
+\end{preview}
+
+\begin{preview}
+  \color{chalkblue}$\displaystyle
+  \bm{\chi}(\bm{X},t):\mathcal{B}_0\longrightarrow\mathcal{B}_t$
+\end{preview}
+
+\begin{preview}
+  \color{chalk}$\displaystyle
+  \Omega_h:\mathcal{T}_h=\bigcup_e K_e$
+\end{preview}
+
+\begin{preview}
+  \color{chalk}$\displaystyle
+  \bm{u}=\overline{\bm{u}}\quad\text{on }\Gamma_D$
+\end{preview}
+
+\begin{preview}
+  \color{chalkblue}$\displaystyle
+  \mu_*(x)\pm2\sigma_*(x)$
+\end{preview}
+
+\begin{preview}
+  \color{chalk}$\displaystyle
+  \mathcal{L}(\theta_1,\theta_2)$
+\end{preview}
+
+\begin{preview}
+  \color{chalk}{\Huge\bfseries Bhavesh}
+\end{preview}
+
+\begin{preview}
+  \color{dashboardink}$\displaystyle
+  N_{\mathrm{visitors}}=\sum_{c\in\mathcal{C}}N_c,
+  \qquad p(c)=\frac{N_c}{N_{\mathrm{visitors}}}$
+\end{preview}
+
+\end{document}
