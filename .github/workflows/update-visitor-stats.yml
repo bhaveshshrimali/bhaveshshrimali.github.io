@@ -1,0 +1,46 @@
+name: Update visitor dashboard
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: visitor-dashboard
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.0.2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.4.0
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Refresh the aggregate Cloudflare snapshot
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ACCOUNT_TAG: ${{ secrets.CF_ACCOUNT_TAG }}
+          CF_SITE_TAG: ${{ secrets.CF_SITE_TAG }}
+        run: node scripts/update-visitor-stats.mjs
+
+      - name: Commit an updated snapshot
+        run: |
+          if git diff --quiet -- data/visitor-stats.json; then
+            echo "No visitor snapshot change."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/visitor-stats.json
+          git commit -m "Update aggregate visitor statistics"
+          git push
