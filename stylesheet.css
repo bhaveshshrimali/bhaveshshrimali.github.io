@@ -636,6 +636,34 @@ main section[id] {
   font-weight: 750;
 }
 
+.equal-contribution-marker {
+  margin-left: 0.08em;
+  color: var(--amber);
+  font-size: 0.82em;
+  font-weight: 850;
+  line-height: 0;
+}
+
+.equal-contribution-note {
+  display: inline-flex;
+  margin: 0 0 0.45rem;
+  padding: 0.12rem 0.48rem;
+  align-items: center;
+  gap: 0.28rem;
+  border-radius: 999px;
+  color: #76430d;
+  background: var(--amber-soft);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.025em;
+}
+
+.equal-contribution-note span {
+  color: var(--amber);
+  font-size: 1.15em;
+  line-height: 1;
+}
+
 .venue {
   color: var(--muted);
   font-family: var(--serif);
