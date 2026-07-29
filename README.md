@@ -76,7 +76,7 @@ FElupe 10.1.0, NumPy, Matplotlib, and Pillow from the existing `fem` Conda
 environment. The quarter-circle animation uses a mixed displacement-pressure-volume
 formulation with rigid-plate contact. The three-dimensional animation uses a
 compressible Neo-Hookean square-section rod, clamped at one end and shortened while
-the other end twists through 180 degrees.
+the other end twists through 270 degrees on a refined hexahedral mesh.
 
 The quarter-wafer animation is reconstructed from the saved radial displacement
 history in the local `waferbonding_project` paper run. It shows the computed wafer
