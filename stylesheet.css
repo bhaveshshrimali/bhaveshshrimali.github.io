@@ -209,19 +209,27 @@ h3 {
 }
 
 .fem-simulation-compression {
-  --fem-opacity: 0.15;
-  top: 4%;
-  right: -3%;
-  width: clamp(420px, 42vw, 620px);
+  --fem-opacity: 0.14;
+  top: 7%;
+  right: 0;
+  width: clamp(300px, 32vw, 480px);
   transform: rotate(-1.5deg);
 }
 
 .fem-simulation-torsion {
   --fem-opacity: 0.13;
-  bottom: -3%;
-  left: -4%;
-  width: clamp(460px, 44vw, 680px);
+  bottom: 0;
+  left: 0;
+  width: clamp(360px, 36vw, 560px);
   transform: rotate(1deg);
+}
+
+.fem-simulation-wafer {
+  --fem-opacity: 0.12;
+  top: 34%;
+  right: 2%;
+  width: clamp(280px, 27vw, 420px);
+  transform: rotate(-1deg);
 }
 
 main,
@@ -1142,17 +1150,25 @@ main section[id] {
   }
 
   .fem-simulation-compression {
-    --fem-opacity: 0.1;
-    top: 7%;
-    right: -43%;
-    width: 112vw;
+    --fem-opacity: 0.09;
+    top: 9%;
+    right: -30%;
+    width: 92vw;
   }
 
   .fem-simulation-torsion {
-    --fem-opacity: 0.09;
+    --fem-opacity: 0.08;
     bottom: -4%;
-    left: -10%;
-    width: 108vw;
+    left: -18%;
+    width: 96vw;
+  }
+
+  .fem-simulation-wafer {
+    --fem-opacity: 0.075;
+    top: 43%;
+    right: -3%;
+    bottom: auto;
+    width: 72vw;
   }
 
 }

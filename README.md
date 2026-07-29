@@ -71,11 +71,16 @@ KaTeX, TeX, or external math fonts.
 
 ## Solver-generated FEM backgrounds
 
-The two ambient hyperelastic animations in `images/fem/` were generated locally
-with FElupe 10.1.0, NumPy, Matplotlib, and Pillow from the existing `fem` Conda
+The three ambient FEM animations in `images/fem/` were generated locally with
+FElupe 10.1.0, NumPy, Matplotlib, and Pillow from the existing `fem` Conda
 environment. The quarter-circle animation uses a mixed displacement-pressure-volume
-formulation with rigid-plate contact; the three-dimensional animation uses a
-compressible Neo-Hookean solid under torsional loading.
+formulation with rigid-plate contact. The three-dimensional animation uses a
+compressible Neo-Hookean square-section rod, clamped at one end and shortened while
+the other end twists through 180 degrees.
+
+The quarter-wafer animation is reconstructed from the saved radial displacement
+history in the local `waferbonding_project` paper run. It shows the computed wafer
+surface evolving from its initial flat state to the final bonded deformation.
 
 The generation scripts, timestamped solution states, and individual rendered frames
 are intentionally kept outside this repository. Only the optimized GIFs and their
