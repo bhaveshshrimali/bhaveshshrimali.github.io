@@ -301,6 +301,46 @@
     refreshSnapshot();
   };
 
+  const setupFemSimulationBackdrop = () => {
+    const images = Array.from(
+      document.querySelectorAll(".fem-simulation[data-motion-src][data-static-src]")
+    ).filter((image) => image instanceof HTMLImageElement);
+
+    if (!images.length) {
+      return;
+    }
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    images.forEach((image) => {
+      image.addEventListener("load", () => image.classList.add("is-ready"));
+    });
+
+    const syncSources = () => {
+      const useStaticPoster = reducedMotion.matches || document.hidden;
+
+      images.forEach((image) => {
+        const source = useStaticPoster ? image.dataset.staticSrc : image.dataset.motionSrc;
+        if (!source || image.getAttribute("src") === source) {
+          return;
+        }
+
+        image.classList.remove("is-ready");
+        image.src = source;
+      });
+    };
+
+    document.addEventListener("visibilitychange", syncSources);
+
+    if (typeof reducedMotion.addEventListener === "function") {
+      reducedMotion.addEventListener("change", syncSources);
+    } else {
+      reducedMotion.addListener(syncSources);
+    }
+
+    syncSources();
+  };
+
   const setupResearchCanvas = () => {
     const canvas = document.getElementById("research-canvas");
     const context = canvas instanceof HTMLCanvasElement ? canvas.getContext("2d") : null;
@@ -310,7 +350,6 @@
     }
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const finePointer = window.matchMedia("(pointer: fine)");
     const equations = [
       { src: "images/equations/equation-01.png", x: 0.025, y: 0.13, speed: 0.018, compact: true },
       { src: "images/equations/equation-02.png", x: 0.34, y: 0.1, speed: 0.014 },
@@ -352,8 +391,6 @@
 
     const mathLabels = {
       mapping: loadMathAsset("images/equations/equation-13.png"),
-      mesh: loadMathAsset("images/equations/equation-14.png"),
-      dirichlet: loadMathAsset("images/equations/equation-15.png"),
       posterior: loadMathAsset("images/equations/equation-16.png"),
       loss: loadMathAsset("images/equations/equation-17.png")
     };
@@ -364,7 +401,6 @@
     let animationFrame = 0;
     let lastPaint = 0;
     let scrollPosition = window.scrollY;
-    const pointer = { x: 0.7, y: 0.3, targetX: 0.7, targetY: 0.3 };
 
     const resize = () => {
       width = window.innerWidth;
@@ -440,54 +476,6 @@
       body(rightX, 0.17);
       drawArrow(leftX + radius * 1.18, centerY, rightX - radius * 1.18, centerY, "rgba(157, 203, 209, 0.24)");
       drawMathAsset(mathLabels.mapping, (leftX + rightX) * 0.5, centerY - radius * 0.34, Math.max(15, size * 0.019), 0.22, "center");
-      context.restore();
-    };
-
-    const drawFiniteElementMesh = (time) => {
-      const compact = width < 640;
-      const originX = width * (compact ? 0.04 : 0.055);
-      const originY = height * (compact ? 0.67 : 0.68);
-      const meshWidth = width * (compact ? 0.43 : 0.24);
-      const meshHeight = height * (compact ? 0.12 : 0.16);
-      const phase = reducedMotion.matches ? 0 : Math.sin(time * 0.00028) * 0.08;
-      const node = (column, row) => {
-        const u = column / 7;
-        const v = row / 4;
-        const taper = Math.sin(u * Math.PI);
-        return {
-          x: originX + u * meshWidth + Math.sin(v * Math.PI + phase) * taper * meshWidth * 0.035,
-          y: originY + v * meshHeight + Math.sin(u * Math.PI + v * 0.7 + phase) * taper * meshHeight * 0.13
-        };
-      };
-
-      context.save();
-      context.strokeStyle = "rgba(237, 241, 230, 0.13)";
-      context.lineWidth = 0.8;
-
-      for (let row = 0; row <= 4; row += 1) {
-        context.beginPath();
-        for (let column = 0; column <= 7; column += 1) {
-          const point = node(column, row);
-          if (column === 0) context.moveTo(point.x, point.y);
-          else context.lineTo(point.x, point.y);
-        }
-        context.stroke();
-      }
-
-      for (let column = 0; column <= 7; column += 1) {
-        context.beginPath();
-        for (let row = 0; row <= 4; row += 1) {
-          const point = node(column, row);
-          if (row === 0) context.moveTo(point.x, point.y);
-          else context.lineTo(point.x, point.y);
-        }
-        context.stroke();
-      }
-
-      const loadPoint = node(7, 2);
-      drawArrow(loadPoint.x + meshWidth * 0.08, loadPoint.y - meshHeight * 0.14, loadPoint.x, loadPoint.y, "rgba(226, 197, 139, 0.28)");
-      drawMathAsset(mathLabels.mesh, originX, originY - 14, compact ? 14 : 17, 0.19);
-      drawMathAsset(mathLabels.dirichlet, originX, originY + meshHeight + 18, compact ? 14 : 17, 0.19);
       context.restore();
     };
 
@@ -633,61 +621,6 @@
       context.restore();
     };
 
-    const drawContours = (time) => {
-      const centerX = width * (0.71 + (pointer.x - 0.5) * 0.08);
-      const centerY = height * (0.29 + (pointer.y - 0.5) * 0.06);
-      const minDimension = Math.min(width, height);
-
-      context.save();
-      context.translate(centerX, centerY);
-      context.rotate(-0.22 + Math.sin(time * 0.00012) * 0.025);
-      context.lineWidth = 1;
-
-      for (let ring = 1; ring <= 7; ring += 1) {
-        const radius = minDimension * (0.055 + ring * 0.047);
-        context.beginPath();
-        context.ellipse(0, 0, radius * 1.45, radius * 0.72, 0, 0, Math.PI * 2);
-        context.strokeStyle = `rgba(157, 203, 209, ${0.075 + ring * 0.008})`;
-        context.stroke();
-      }
-
-      const points = 19;
-      for (let index = 0; index < points; index += 1) {
-        const progress = index / (points - 1);
-        const decay = Math.pow(1 - progress, 1.45);
-        const angle = 2.8 + progress * 8.2;
-        const x = Math.cos(angle) * minDimension * 0.36 * decay;
-        const y = Math.sin(angle) * minDimension * 0.18 * decay;
-
-        if (index === 0) {
-          context.beginPath();
-          context.moveTo(x, y);
-        } else {
-          context.lineTo(x, y);
-        }
-      }
-
-      context.strokeStyle = "rgba(226, 197, 139, 0.42)";
-      context.lineWidth = 1.4;
-      context.stroke();
-
-      for (let index = 0; index < points; index += 3) {
-        const progress = index / (points - 1);
-        const decay = Math.pow(1 - progress, 1.45);
-        const angle = 2.8 + progress * 8.2;
-        const x = Math.cos(angle) * minDimension * 0.36 * decay;
-        const y = Math.sin(angle) * minDimension * 0.18 * decay;
-        const pulse = reducedMotion.matches ? 0 : Math.sin(time * 0.0025 - index * 0.4) * 0.7;
-
-        context.beginPath();
-        context.arc(x, y, 2.2 + pulse, 0, Math.PI * 2);
-        context.fillStyle = "rgba(226, 197, 139, 0.62)";
-        context.fill();
-      }
-
-      context.restore();
-    };
-
     const drawMechanicsField = (time) => {
       const baseline = height * 0.76;
       const amplitude = Math.min(24, height * 0.03);
@@ -751,16 +684,12 @@
     };
 
     const draw = (time) => {
-      pointer.x += (pointer.targetX - pointer.x) * 0.035;
-      pointer.y += (pointer.targetY - pointer.y) * 0.035;
       context.clearRect(0, 0, width, height);
       drawMechanicsField(time);
       drawMappedBodies();
-      drawFiniteElementMesh(time);
       drawGaussianProcess();
       drawLossSurface(time);
       drawAgentLoop(time);
-      drawContours(time);
       drawEquations();
     };
 
@@ -789,14 +718,6 @@
       if (reducedMotion.matches) {
         draw(performance.now());
       }
-    }, { passive: true });
-
-    window.addEventListener("pointermove", (event) => {
-      if (!finePointer.matches) {
-        return;
-      }
-      pointer.targetX = event.clientX / Math.max(width, 1);
-      pointer.targetY = event.clientY / Math.max(height, 1);
     }, { passive: true });
 
     document.addEventListener("visibilitychange", () => {
@@ -831,5 +752,6 @@
   setupAnalytics();
   stabilizeDeepLink();
   setupVisitorDashboard();
+  setupFemSimulationBackdrop();
   setupResearchCanvas();
 })();

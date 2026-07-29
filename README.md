@@ -69,6 +69,19 @@ gs -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pngalpha -r300 \
 The browser loads only the small rendered images. It does not load MathJax,
 KaTeX, TeX, or external math fonts.
 
+## Solver-generated FEM backgrounds
+
+The two ambient hyperelastic animations in `images/fem/` were generated locally
+with FElupe 10.1.0, NumPy, Matplotlib, and Pillow from the existing `fem` Conda
+environment. The quarter-circle animation uses a mixed displacement-pressure-volume
+formulation with rigid-plate contact; the three-dimensional animation uses a
+compressible Neo-Hookean solid under torsional loading.
+
+The generation scripts, timestamped solution states, and individual rendered frames
+are intentionally kept outside this repository. Only the optimized GIFs and their
+maximum-deformation WebP posters are deployed. The site selects posters instead of
+animated files when the visitor requests reduced motion or the page is hidden.
+
 ## Validation
 
 Useful local checks (use an HTML5-aware validator rather than the legacy macOS

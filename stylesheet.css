@@ -184,6 +184,46 @@ h3 {
   pointer-events: none;
 }
 
+.fem-simulation-backdrop {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.fem-simulation {
+  --fem-opacity: 0.14;
+  position: absolute;
+  max-width: none;
+  opacity: 0;
+  filter: contrast(1.06);
+  mix-blend-mode: screen;
+  transition: opacity 500ms ease;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 24%, rgba(0, 0, 0, 0.9) 56%, transparent 78%);
+  mask-image: radial-gradient(ellipse at center, black 24%, rgba(0, 0, 0, 0.9) 56%, transparent 78%);
+}
+
+.fem-simulation.is-ready {
+  opacity: var(--fem-opacity);
+}
+
+.fem-simulation-compression {
+  --fem-opacity: 0.15;
+  top: 4%;
+  right: -3%;
+  width: clamp(420px, 42vw, 620px);
+  transform: rotate(-1.5deg);
+}
+
+.fem-simulation-torsion {
+  --fem-opacity: 0.13;
+  bottom: -3%;
+  left: -4%;
+  width: clamp(460px, 44vw, 680px);
+  transform: rotate(1deg);
+}
+
 main,
 .site-footer {
   position: relative;
@@ -1099,6 +1139,20 @@ main section[id] {
   .publication-media img {
     max-height: 260px;
     object-fit: contain;
+  }
+
+  .fem-simulation-compression {
+    --fem-opacity: 0.1;
+    top: 7%;
+    right: -43%;
+    width: 112vw;
+  }
+
+  .fem-simulation-torsion {
+    --fem-opacity: 0.09;
+    bottom: -4%;
+    left: -10%;
+    width: 108vw;
   }
 
 }
